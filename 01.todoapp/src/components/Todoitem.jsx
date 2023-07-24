@@ -3,7 +3,8 @@ import React from "react";
     return (
       <li className="todo-item">
         <span>
-          <input className="checkbox"type="checkbox" />
+        {props.completed ?<></>:
+          <input className="checkbox"type="checkbox" />}
           <span>{props.todo}</span>
         </span>
         <p>...</p>
