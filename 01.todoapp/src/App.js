@@ -8,11 +8,11 @@ function App() {
  return (
  <div className="todo-container">
   <Header />
-  <Todoitem />
-  <Todoitem />
-  <Todoitem />
-  <Todoitem />
-  <Todoitem />
+  <Todoitem todo="eat" />
+  <Todoitem todo="sleep"/>
+  <Todoitem todo="code"/>
+  <Todoitem todo="repeat"/>
+  <Todoitem  todo="assignment"/>
   <Button />
  </div>)
 }
