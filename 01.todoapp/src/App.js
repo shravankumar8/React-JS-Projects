@@ -15,7 +15,6 @@ function App() {
   <Todoitem todo="repeat"/>
   <Todoitem  todo="assignment"/>
   <Button />
-  <Valueach/>
   
  </div>)
 }
