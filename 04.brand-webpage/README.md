@@ -1,5 +1,5 @@
 <h1>THIS IS HOW THE WEBPAGE LOOKS </h1>
-![IMAGE](./README_images//Screenshot%20from%202023-08-15%2012-41-47.png)
+![IMAGE](./README_images//Screenshot%20from%202023-08-15%2012-41-47.png)<br>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
