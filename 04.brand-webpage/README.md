@@ -1,5 +1,6 @@
 <h1>THIS IS HOW THE WEBPAGE LOOKS </h1>
-![desktop view](./README_images/final.png)<br>
+![desktop view](./README_images/final.png)
+<br>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
