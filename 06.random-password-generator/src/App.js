@@ -1,20 +1,30 @@
-import React, { useState,useCallback } from "react";
+import React from 'react'
+import {useState} from 'react'
+function App(){
+  const [length,setlength]=useState(8)
+  const [numberallowed,setnumberallowed]=useState(false)
+  const [charallowed,setcharallowed]=useState(false)
+  const [password,setpassword]=useState("")
 
-function App() {
-  const [length, setLength] = useState(8);
-const [numberalow,Setnumberalow]=useState(false)
-const [charalowed,Setcharalowed]=useState(false)
-const [passord,Setpassord]=useState("")
-const passwordgenerator=useCallback(()=>{
-    let pass=""
-    let str="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-},[length,numberalow,charalowed,passord])
-  return (
-    <>
-      <button>Increase Length</button>
-      <p>Current Length: {length}</p>
-    </>
-  );
+ let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy"
+ let numbers="1234567890"
+  let chars="!@#$%^&*(){}"
+  const passwordgenerator=()=>{
+    if(numberallowed){
+str+=numbers
+for (let i = 0; i <length; i++) {
+  console.log(str[i])
+  
 }
+    }
+    if(charallowed){
+      str+=chars
+    }
 
-export default App;
+  }
+  return(
+    <>
+    <h1 className='text-black'>hi</h1></>
+  )
+}
+export default App
