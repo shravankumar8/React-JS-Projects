@@ -1,4 +1,6 @@
 import { useState,useEffect } from 'react'
+import useCurrencyInfo from "./hooks/usecurrencyinfo"
+
 
 import './App.css'
 
@@ -7,7 +9,7 @@ function App() {
 
   return (
     <>
-      <h1 >this is sharavan</h1>
+      <h1>this is sharavan</h1>
     </>
   );
 }
