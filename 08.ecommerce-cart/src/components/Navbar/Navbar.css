@@ -1,8 +1,12 @@
+
 .navbar{
     display: flex;
     justify-content: space-between;
-    padding: 16px 50px;
     box-shadow: 0 1px 3px -2px black;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100px;
+    width:auto;
 }
 .nav-logo{
     display: flex;
@@ -68,6 +72,7 @@
     background-color: rgb(233, 233, 233);
 }   
 .nav-cart-count{
+    
     background-color: red;
     width: 22px;
     display: flex;
