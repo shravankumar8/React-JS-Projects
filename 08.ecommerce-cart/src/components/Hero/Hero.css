@@ -7,6 +7,7 @@ padding: 0;
     background: linear-gradient(180deg,#fde1ff,#e1ffea22 60%);
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 .hero-left{
     justify-content: center;
@@ -22,9 +23,10 @@ padding: 0;
 }
 
 .hero-left p{
-    
-  
-    font-size: 100px;
+    font-stretch: condensed;
+    font-weight: 900;
+    color: #000000e6;
+    font-size: 76px;
     line-height: 1.1;
 }
 .hero-latest-button{
@@ -38,9 +40,18 @@ padding: 0;
     padding: 10px 10px;
     border-radius: 20px;
     }
+    
+.rightimage{
+    position: absolute;
+    top: 10;
+    right: 250px;
+}
+.hero-right{
+    display: flex;
+
+}
 .hero-right img{
     width: 420px;
-    height: 420 px;
     margin-right: 70px;
     }
 .text{

@@ -1,11 +1,15 @@
 /* Define the width for items */
 .Item {
-    width: 350px;
+    width: 270px;
 }
 
 /* Style margins for paragraphs within items */
 .Item p {
     margin: 6px 0px;
+}
+.Item img{
+    width: 280px;
+    
 }
 
 /* Style for a container holding item prices */
