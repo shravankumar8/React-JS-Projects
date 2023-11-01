@@ -39,6 +39,10 @@ padding: 0;
 
     padding: 10px 10px;
     border-radius: 20px;
+    cursor: pointer;
+    }
+    .arrow-btn{
+        width: 15px;
     }
     
 .rightimage{

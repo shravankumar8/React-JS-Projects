@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-import arrow_icon from "../Assets/arrow.png"
+import arrow_icon from "../Assets/arrow-right-solid.svg"
 import hero_image from "../Assets/hero_image.png"
 import hero_image2 from "../Assets/model-png-1976.png";
 
@@ -16,8 +16,8 @@ const Hero = () => {
         </p>
 
         <div className="hero-latest-button">
-          <div>Latest Collection</div>
-          <img src={arrow_icon} alt="" />
+          <div className="ltst-btn">Latest Collection</div>
+          <img className="arrow-btn" src={arrow_icon} alt="" />
         </div>
       </div>
       <div className="hero-right">
