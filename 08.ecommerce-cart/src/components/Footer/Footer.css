@@ -1,0 +1,40 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.footerlogo{
+    display: flex;
+    align-items: center;
+}
+.footerlogo p{
+    cursor:default;
+    font-size: 38px;
+    font-weight: 600;
+    color: #171717;
+}
+.footerlinks ul {
+    display: flex;
+    gap: 30px;
+    list-style-type: none;
+
+}
+.footerlinks ul li{
+    cursor: pointer;
+}
+.sociallinks{
+    cursor: pointer;
+    display: flex;
+    gap: 20px;
+}
+.regulations{
+    margin-top: 40px;
+    font-size: 13px;
+    color: grey;
+}
+.hkr{
+    width: 80%;
+    margin-bottom: -26px;
+}
