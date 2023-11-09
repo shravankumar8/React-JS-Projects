@@ -6,7 +6,7 @@ import Offers from '../components/offers/Offers'
 import Newcollections from '../components/Newcollections/Newcollections'
 import Newsletter from '../components/Newsletter/Newsletter'
 import Footer from '../components/Footer/Footer'
-import './home.css'
+import "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/pages/stylesheets/home.css";
 
 
 const shop = () => {

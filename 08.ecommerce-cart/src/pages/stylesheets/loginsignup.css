@@ -1,0 +1,49 @@
+.logsig{
+    width: 100%;
+    height:80vh;
+    background-color: #fce3fe;
+    padding: 10px 0px;
+    
+}
+.loginsignup{
+    width: 400px;
+    border-radius: 10px ;
+    
+    height: 470px;
+    background-color: white;
+    margin: auto;
+    padding: 10px 60px 50px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.inputfields{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.inputfields input{
+    width: 350px;
+    font-size: 15px;
+    padding: 10px ;
+    border-radius: 6px;
+}
+.agreement{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sumbit_sign{
+    border: none;
+    background-color: rgb(190, 49, 49);
+    padding: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 20px;
+}
+.highlight{
+    color:rgb(160, 25, 25); ;
+}
