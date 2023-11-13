@@ -6,7 +6,7 @@ import pic from '../Assets/p1_product_i1.png'
 const Item = (props) => {
   return (
     <div className="Item">
-      <Link to={`/product/${props.id}`}>
+      <Link to={`/Product/${props.id}`}>
         <img src={props.image} alt="" />
       </Link>
       <p>{props.name}books</p>
