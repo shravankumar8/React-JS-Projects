@@ -1,0 +1,25 @@
+.descriptionbox{
+    display: flex;
+    flex-direction: column;
+    margin: 120px 170px;
+  
+    padding: 20px 20px;
+}
+.decription-navigation{
+    display: flex;
+}
+.descriptionbox-description{
+    border: 1px solid grey;
+    padding: 10px 20px;
+    border-bottom: none;
+}
+.navbar-description{
+    border: 1px solid grey;
+    padding: 10px 20px;
+}
+.descriptionbox-description{
+  border: 1px solid grey;
+}
+.fade{
+    background-color: rgb(200, 200, 200);
+}
