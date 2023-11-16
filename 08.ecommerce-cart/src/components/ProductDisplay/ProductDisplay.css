@@ -69,13 +69,25 @@ gap: 20px;
     cursor: pointer;
 
 }
+.addtocart:hover{
+   background-color: rgb(196, 64, 64);  
+}
+.addtocart:active{
+    
+  
+     transform: scale(1.1);
+  
+   
+   
+}
 .addtocart{
+    transition: transform 0.3s ease-in-out;
+    width: 250px;
     cursor: pointer;
-    color:white;
     padding: 15px 20px;
+    color:white;
     background-color: rgb(201, 49, 49);
     border: none;
-    width: 250px;
     
 }
 .productdisplay-category span{
@@ -85,4 +97,41 @@ gap: 20px;
 .productdisplay-tags span{
     margin-top: -100px;
     font-weight: 800;
+}
+.cart-promocodes{
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+.cart-promocodes p{
+    color: #555;
+}
+.promobox{
+    width: 505px;
+    margin-top: 15px;
+    padding-left: 20px;
+    height: 58px;
+    background: #eaeaea;
+    border-radius: 20px;
+}
+.promobox input{
+    border: none;   
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    width: 330px;
+    height: 50px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    
+}
+.promobox button{
+    width: 170px;
+    border-radius: 20px;
+    height: 58px;
+    font-size: 16px;
+    background: black;
+    color: white;
+    cursor: pointer;
+
 }

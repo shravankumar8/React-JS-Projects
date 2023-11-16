@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
-
+import { ShopContext } from "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/context/shopContext.jsx";
 const Navbar = () => {
+  const  { quantity }=useContext(ShopContext)
   const [activeMenu, setActiveMenu] = useState("");
 
   return (
@@ -43,17 +44,18 @@ const Navbar = () => {
       </ul>
       <div className="nav-login-cart">
         <button>
-          <Link
-            style={{ textDecoration: "none" }}
-            to="/login"
-          >
+          <Link style={{ textDecoration: "none" }} to="/login">
             Login
           </Link>
         </button>
         <Link to="/cart">
           <img src={cart_icon} alt="Cart" />
+        <div className="nav-cart-count">
+          
+          {quantity}
+        </div>
         </Link>
-        <div className="nav-cart-count">0</div>
+        
       </div>
     </div>
   );

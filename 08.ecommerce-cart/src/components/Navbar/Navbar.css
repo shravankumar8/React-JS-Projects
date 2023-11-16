@@ -73,8 +73,9 @@
     background-color: rgb(233, 233, 233);
 }   
 .nav-cart-count{
-    
-    background-color: red;
+    padding-top: 1px;    
+    background-color: rgb(231, 69, 69);
+
     width: 22px;
     display: flex;
     height: 22px;
@@ -86,4 +87,5 @@
     position: absolute;
     top: 34px;
     right:-6px;
+    cursor: pointer;
 }
