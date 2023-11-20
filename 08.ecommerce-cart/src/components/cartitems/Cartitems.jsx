@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import './cartitems.css'
 import { ShopContext } from '../../context/shopContext'
 const Cartitems = () => {
-    const  { all_product,Totalsum, quantity,cartItems, addToCart, removeFromCart }=useContext(ShopContext)
+    const  { all_product,Totalsum, quantity,cartItems, removeFromCart }=useContext(ShopContext)
     
   
     return (
@@ -48,6 +48,9 @@ const Cartitems = () => {
                 {/* <p>total price{Totalsim}</p> */}
               </div>
             );
+          }
+          else{
+            return  null
           }
         })}
         <div className='cartitems-down'>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link }from 'react-router-dom'
 import './Item.css'
-import pic from '../Assets/p1_product_i1.png'
+
 
 const Item = (props) => {
     const scrollToTop = () => {

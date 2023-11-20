@@ -5,7 +5,7 @@ import stardullicon from '../Assets/star_dull_icon.png'
 import { ShopContext } from "../../context/shopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
-  const { addToCart,removeFromCart}=useContext(ShopContext)
+  const { addToCart,}=useContext(ShopContext)
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
