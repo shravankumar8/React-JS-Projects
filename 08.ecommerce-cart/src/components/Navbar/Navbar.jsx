@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
-import { ShopContext } from "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/context/shopContext.jsx";
+import { ShopContext } from "../../context/shopContext";
 const Navbar = () => {
   const  { quantity }=useContext(ShopContext)
   const [activeMenu, setActiveMenu] = useState("");

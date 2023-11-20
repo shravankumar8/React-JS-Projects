@@ -1,5 +1,5 @@
 import React from "react";
-import "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/pages/stylesheets/loginsignup.css";
+import "./stylesheets/loginsignup.css";
 
 const LoginSignup = () => {
   return (

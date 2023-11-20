@@ -1,5 +1,5 @@
 import React from "react";
-import arrow_icon from "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/components/Assets/breadcrum_arrow.png";
+import arrow_icon from "../Assets/breadcrum_arrow.png";
 import "./Breadcrums.css";
 const Breadcrums = (props) => {
   const { product } = props;

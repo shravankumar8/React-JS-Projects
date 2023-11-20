@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "/home/gitstar/Desktop/github repos/React_Projects/08.ecommerce-cart/src/pages/stylesheets/ShopCategory.css";
+import "./stylesheets/ShopCategory.css";
 import { ShopContext } from "../context/shopContext";
 import dropdown from "../components/Assets/dropdown_icon.png";
 import Item from "../components/Item/Item";
