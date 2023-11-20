@@ -13,29 +13,40 @@ const getDefaultCart = () => {
 };
 const ShopContextProvider = (props) => {
   const [cartItems, setcartItems] = useState(getDefaultCart());
-  
-  const addToCart=(itemId)=>{
-    setcartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
-  }
-  
-  const removeFromCart=(itemId)=>{
-    setcartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-  }
-  let  Totalsum=0;
-  let quantity=0;
-  all_product.map((e) => {
-          if (cartItems[e.id] > 0) {
-            
-            quantity += cartItems[e.id];
-            const producttotal = e.new_price * cartItems[e.id];
-            Totalsum += producttotal;}
-            else{
-              return null
-            }
-          }
-            )
-  console.log(Totalsum)
-  const contextValue = { all_product,Totalsum, quantity,cartItems, addToCart, removeFromCart };
+
+  const addToCart = (itemId) => {
+    setcartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  };
+
+  const removeFromCart = (itemId) => {
+    setcartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  };
+  // ... (previous imports and code)
+
+  let Totalsum = 0;
+  let quantity = 0;
+  all_product.forEach((e) => {
+    if (cartItems[e.id] > 0) {
+      quantity += cartItems[e.id];
+      const producttotal = e.new_price * cartItems[e.id];
+      Totalsum += producttotal;
+    }
+    // Note: No return statement needed here because this is a forEach loop
+  });
+
+  console.log(Totalsum);
+
+  // ... (rest of your code)
+
+  console.log(Totalsum);
+  const contextValue = {
+    all_product,
+    Totalsum,
+    quantity,
+    cartItems,
+    addToCart,
+    removeFromCart,
+  };
   console.log(cartItems);
   return (
     <ShopContext.Provider value={contextValue}>
