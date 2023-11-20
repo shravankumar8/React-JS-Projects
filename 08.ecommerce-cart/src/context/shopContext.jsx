@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+  import React, { createContext, useState } from "react";
 import all_product from "../components/Assets/all_product";
 
 // Create a context using createContext
@@ -25,9 +25,15 @@ const ShopContextProvider = (props) => {
   let quantity=0;
   all_product.map((e) => {
           if (cartItems[e.id] > 0) {
+            
             quantity += cartItems[e.id];
             const producttotal = e.new_price * cartItems[e.id];
-            Totalsum += producttotal;}})
+            Totalsum += producttotal;}
+            else{
+              return null
+            }
+          }
+            )
   console.log(Totalsum)
   const contextValue = { all_product,Totalsum, quantity,cartItems, addToCart, removeFromCart };
   console.log(cartItems);

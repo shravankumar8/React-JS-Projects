@@ -1,11 +1,9 @@
 import React from 'react'
 import Hero from '../components/Hero/Hero'
-import Item from '../components/Item/Item'
 import Popular from '../components/Popular/Popular'
 import Offers from '../components/offers/Offers'
 import Newcollections from '../components/Newcollections/Newcollections'
 import Newsletter from '../components/Newsletter/Newsletter'
-import Footer from '../components/Footer/Footer'
 import "./stylesheets/home.css";
 
 
