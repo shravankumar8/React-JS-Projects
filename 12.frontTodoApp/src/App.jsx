@@ -1,37 +1,40 @@
-import './App.css'
-import {useState} from 'react'
+import "./App.css";
+import { useState } from "react";
 function App(person) {
-  const [todo, settodo] = useState({
-    title: "go to gym",
-    describe: "go to gym from 5-6",
-    id: 1,
-  });
-
-  setInterval(() => {
-    settodo({
-      title: "go to gerggr",
-      describe: "go to gymgr gfrgom 5-6",
-      id: Math.random() * 23,
-    });
-  }, 2000);
-
+  const [todo, settodo] = useState([
+    {
+      title:"brush ",
+      describe:"wakie wakie brush your teeth",
+      id:1
+    },
+    {
+      title:"bath ",
+      describe:"wakie wakie bath your body",
+      id:1
+    },
+    {
+      title:"shave ",
+      describe:"wakie wakie shave your beard",
+      id:1
+    },
+  ]);
+  
   return (
     <>
       <h1>hello world</h1>
-      {todo.title}
-      {todo.describe}
-      {todo.id}
-      <Person firstname={"kirta"} />
-    </>
-  );
-}
-function Person(props){
-  return (
-    <>
-      <h1>This is Shravan</h1>
-      <h1>welcome from {props.firstname}</h1>
+
+      {todo.map((value) => {
+        return (
+          <>
+            <p>{value.title}</p>
+            <p>{value.describe}</p>
+            <p>{value.age}</p>
+          </>
+        );
+      })}
     </>
   );
 }
 
-export default App
+
+export default App;
