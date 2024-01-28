@@ -4,45 +4,88 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { Typography } from "@mui/material";
+import { useState } from "react";
+
 
 function Signup() {
+  const [username,setusername]=useState("")
+  const [password,setpassword]=useState("")
   return (
     <>
       <div>
-        <center>
-          <div
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: "140px",
+            marginBottom: "10px",
+            color: "white",
+            // text,
+          }}
+        >
+          <Typography
             style={{
-              paddingTop: "140px",
-              marginBottom: "10px",
+              fontSize: "20px",
             }}
-            >
-            welcome to Coursera
-          </div>
-        </center>
-        <center>
-          <Card varint={"outlined"}style={{width:400,padding:40}}>
+          >
+            Welcome To Coursera Signup Below
+          </Typography>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Card varint={"outlined"} style={{ width: 400, padding: 40 }}>
             <TextField
-              id="outlined-basic"
+              onChange={(i) => {
+                setusername(i.target.value);
+              }}
               label="Email"
               variant="outlined"
               fullWidth="true"
-              />
-            <br />
-            <br />
-            <TextField
-              fullWidth="true"
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
             />
             <br />
             <br />
-            <Button variant="contained">Signup</Button>
+            <TextField
+              onChange={(i) => {
+                setpassword(i.target.value);
+              }}
+              fullWidth={true}
+              label="Password"
+              variant="outlined"
+              type="password"
+            />
+            <br />  
+            <br />
+            <Button
+              variant="contained"
+              onClick={() => {
+                fetch("http://localhost:3000/admin/signup", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ username, password }),
+                })
+                  .then((res) => {
+                    if (res.statusCode === 200) {
+                    }
+                    return res.json();
+                  })
+                  .then((data) => {
+                    console.log(data.token);
+                    localStorage.setItem("JWDAuthToken", data.token);
+                  });
+              }}
+            >
+              Signup
+            </Button>
 
             <br />
             <br />
           </Card>
-        </center>
+        </div>
       </div>
     </>
   );

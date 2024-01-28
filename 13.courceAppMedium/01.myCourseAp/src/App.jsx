@@ -1,17 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Signup from './components/Signupp'
 import './App.css'
-import Appbar from './components/Appbar'
-function App() {
-  const [count, setCount] = useState(0)
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Appbar from './components/Appbar'
+import Signin from './components/Signin'
+function App() {
+  
   return (
     <>
-    <div style={{width:"100vw",height:'100vh',backgroundColor:"black"}}>
-      <Appbar />
-      <Signup />
+      <div className="mainDiv">
+        <Appbar />
+        <Router>
+          <Routes>
+            <Route path="/Signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </Router>
       </div>
     </>
   );

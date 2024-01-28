@@ -1,6 +1,5 @@
-*{
-    padding:0
-}
-body{
-    padding:0
+.mainDiv{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
