@@ -4,16 +4,16 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Appbar from './components/Appbar'
 import Signin from './components/Signin'
-
+import CreateCourse from './components/createCourse'
 function App() {
 
   return (
     <>
       <div className="mainDiv">
         <Router>
-        <Appbar />
           <Routes>
-            <Route path="/Signin" element={<Signin />} />
+            <Route path="/createcourse" element={<CreateCourse />} />
+            <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
         </Router>

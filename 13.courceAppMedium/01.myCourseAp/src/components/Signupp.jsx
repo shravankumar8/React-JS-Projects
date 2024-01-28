@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Typography } from "@mui/material";
 import { useState } from "react";
+import Appbar from "./Appbar";
 
 
 function Signup() {
@@ -13,6 +14,7 @@ function Signup() {
   const [password,setpassword]=useState("")
   return (
     <>
+    < Appbar/>
       <div>
         <div
           style={{
@@ -45,7 +47,7 @@ function Signup() {
               }}
               label="Email"
               variant="outlined"
-              fullWidth="true"
+              fullWidth={true}
             />
             <br />
             <br />
@@ -58,7 +60,7 @@ function Signup() {
               variant="outlined"
               type="password"
             />
-            <br />  
+            <br />
             <br />
             <Button
               variant="contained"
@@ -74,8 +76,11 @@ function Signup() {
                     return res.json();
                   })
                   .then((data) => {
-                    console.log(data.token);
-                    localStorage.setItem("JWDAuthToken", data.token);
+                    console.log(data.message  );
+                    if(data.token){
+
+                      localStorage.setItem("JwtToken", data.token);
+                    }
                   });
               }}
             >
