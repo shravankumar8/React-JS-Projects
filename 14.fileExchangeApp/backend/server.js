@@ -1,39 +1,32 @@
 const express = require("express");
 const multer = require("multer");
-const cors=require("cors")
+const cors = require("cors");
 const path = require("path");
-
 const fs = require("fs");
+
 const app = express();
-const port = 3000;
-app.use(cors())
+const port = 3001;
+app.use(cors());
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 app.post("/upload", upload.single("image"), (req, res) => {
   const imageData = req.file.buffer; // This contains the binary data of the image
-  console.log(imageData);
+   const imageBuffer = Buffer.from(imageData, "base64");
+   const imageName = req.body.imageName; // Access the image name from the request body
+   const fileName = `${imageName}.png`;
+    fs.writeFile(fileName, imageBuffer, (err) => {
+      if (err) {
+        console.error("Error writing image file:", err);
+        return res.status(500).json({ error: "Error writing image file" });
+      } else {
+        console.log("Image file created successfully:", fileName);
+      }
+    });
+  console.log(imageName);
+  // Your existing code for handling image data...
 
-  // Replace 'your_base64_encoded_image_string_here' with the actual base64 string
-  const base64String = "your_base64_encoded_image_string_here";
-
-  // Create a buffer from the base64 string
-  const imageBuffer = Buffer.from(base64String, "base64");
-
-  // Specify the file path and name
-  const filePath = "/image.png";
-
-  // Write the buffer to the file
-  fs.writeFile(filePath, imageBuffer, (err) => {
-    if (err) {
-      console.error("Error writing image file:", err);
-    } else {
-      console.log("Image file created successfully:", filePath);
-    }
-  });
-
-
-  // Handle the image data (save to storage, process, etc.)
   res.json({ message: "Image uploaded successfully" });
 });
 

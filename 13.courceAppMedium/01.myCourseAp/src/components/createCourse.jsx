@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
+import Appbar from "./Appbar";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 import * as React from "react";
@@ -26,15 +27,17 @@ function CreateCourse() {
     const [courseDescription, setCourseDescription] = useState("");
     const [coursePrice, setCoursePrice] = useState(0);
     const [published, setPublished] = useState(true)
+    const [image, setImage] = useState(null);
   return (
     <>
+      <Appbar />
       <div>
         {selectedFile.name}
         <div
           style={{
             display: "flex",
             justifyContent: "center",
-            paddingTop: "60px",
+            paddingTop: "30px",
             marginBottom: "10px",
             color: "white",
             // text,
@@ -82,7 +85,7 @@ function CreateCourse() {
                 shrink: true,
               }}
             />
-    
+
             <br />
             <br />
             <Button
@@ -91,6 +94,7 @@ function CreateCourse() {
               type="number"
               onChange={(e) => {
                 setSelectedFile(e.target.files[0]);
+                setImage(selectedFile);
                 console.log(selectedFile.name);
               }}
             >
@@ -122,6 +126,8 @@ function CreateCourse() {
             <Button
               variant="contained"
               onClick={() => {
+                const formData = new FormData();
+                formData.append("image", image);
                 if (localStorage.getItem("JwtToken")) {
                   console.log(localStorage.getItem("JwtToken"));
                   fetch("http://localhost:3000/admin/courses", {
@@ -137,6 +143,7 @@ function CreateCourse() {
                       Price: coursePrice,
                       imageLink: selectedFile.name,
                       published,
+                      formData: formData,
                     }),
                   })
                     .then((res) => {
