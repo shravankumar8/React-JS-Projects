@@ -7,9 +7,11 @@ import CardContent from "@mui/material/CardContent";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import Appbar from "./Appbar";
+import { useNavigate } from "react-router-dom";
 
 
 function Signup() {
+  let navigate =useNavigate()
   const [username,setusername]=useState("")
   const [password,setpassword]=useState("")
   return (
@@ -77,7 +79,11 @@ function Signup() {
                   })
                   .then((data) => {
                     console.log(data.message  );
-                    if(data.token){
+                    if(data.token){   
+                      setTimeout(() =>{
+
+                        navigate("/");
+                      },500)
 
                       localStorage.setItem("JwtToken", data.token);
                     }

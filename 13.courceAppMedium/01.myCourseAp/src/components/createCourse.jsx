@@ -134,13 +134,11 @@ function CreateCourse() {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
-                      authorization:
-                        "bearer" + " " + localStorage.getItem("JwtToken"),
-                    },
+                      authorization:"bearer" + " " + localStorage.getItem("JwtToken"),},
                     body: JSON.stringify({
                       title: courseTitle,
                       description: courseDescription,
-                      Price: coursePrice,
+                      price: coursePrice,
                       imageLink: selectedFile.name,
                       published,
                       formData: formData,
@@ -148,8 +146,9 @@ function CreateCourse() {
                   })
                     .then((res) => {
                       if (res.statusCode === 200) {
+                          alert("Course saved successfully")
+                        return res.json();
                       }
-                      return res.json();
                     })
                     .then((data) => {
                       console.log(data.message, data.courseId);
