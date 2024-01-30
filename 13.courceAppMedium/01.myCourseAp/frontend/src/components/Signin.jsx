@@ -7,7 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import { Typography } from "@mui/material";
  import Appbar from "./Appbar";
 import { useState } from "react";
- 
+
+import url from "../assets/url";
  function Signin() {
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
@@ -41,10 +42,9 @@ import { useState } from "react";
          >
            <Card varint={"outlined"} style={{ width: 400, padding: 40 }}>
              <TextField
-             onChange={(e)=>{
-              setusername(e.target.value)
-            
-             }}
+               onChange={(e) => {
+                 setusername(e.target.value);
+               }}
                id="outlined-basic"
                label="Email"
                variant="outlined"
@@ -53,9 +53,9 @@ import { useState } from "react";
              <br />
              <br />
              <TextField
-             onChange={(e)=>{
-              setpassword(e.target.value)
-             }}
+               onChange={(e) => {
+                 setpassword(e.target.value);
+               }}
                fullWidth={true}
                id="outlined-basic"
                label="Password"
@@ -65,12 +65,12 @@ import { useState } from "react";
              <br />
              <Button
                onClick={() => {
-                 fetch("http://localhost:3000/admin/login", {
+                 fetch(`${url}/admin/login`, {
                    method: "POST",
-                    headers: { "Content-Type": "application/json",
-                   "username":username,
-                   "password":password
-
+                   headers: {
+                     "Content-Type": "application/json",
+                     username: username,
+                     password: password,
                    },
                  })
                    .then((res) => {

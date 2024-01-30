@@ -6,6 +6,8 @@ import Checkbox from "@mui/material/Checkbox";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import Appbar from "./Appbar";
+import url from "../assets/url"
+
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 import * as React from "react";
@@ -26,10 +28,13 @@ function CreateCourse() {
   const [courseDescription, setCourseDescription] = useState("");
   const [coursePrice, setCoursePrice] = useState(0);
   const [published, setPublished] = useState(true);
+  const [imageLink, setImageLink] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [image, setImage] = useState(null);
   return (
     <>
+
+
       <Appbar />
       <div>
         {selectedFile.name}
@@ -37,7 +42,7 @@ function CreateCourse() {
           style={{
             display: "flex",
             justifyContent: "center",
-            paddingTop: "30px",
+            paddingTop: "60px",
             marginBottom: "10px",
             color: "white",
             // text,
@@ -88,18 +93,17 @@ function CreateCourse() {
 
             <br />
             <br />
-            <Button
-              component="label"
-              variant="contained"
-              type="number"
-              onChange={(e) => {
-                setSelectedFile(e.target.files[0]);
-                setImage(selectedFile);
+            <TextField
+              onChange={(i) => {
+                setImageLink(i.target.value);
               }}
-            >
-              Image to upload
-              <VisuallyHiddenInput type="file" />
-            </Button>
+              label="Image Link"
+              id="outlined-number"
+              fullWidth={true}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
             <br />
             <br />
             {selectedFile.name && (
@@ -125,31 +129,30 @@ function CreateCourse() {
             <Button
               variant="contained"
               onClick={() => {
-                
-                  // console.log(localStorage.getItem("JwtToken"));
-                  fetch("http://localhost:3000/admin/courses", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      authorization:
-                        "bearer" + " " + localStorage.getItem("JwtToken"),
-                    },
-                    body: JSON.stringify({
-                      title: courseTitle,
-                      description: courseDescription,
-                      price: coursePrice,
-                      imageLink: selectedFile.name,
-                      published,
-                    }),
-                  }).then((res) => {
-                      
-                        return res.json();
-                      }).then((data) => {
-                      // alert(data)
-                      console.log(data);
-                      alert(data.message)
-                    });
-                
+                // console.log(localStorage.getItem("JwtToken"));
+                fetch(`${url}/admin/courses`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    authorization:
+                      "bearer" + " " + localStorage.getItem("JwtToken"),
+                  },
+                  body: JSON.stringify({
+                    title: courseTitle,
+                    description: courseDescription,
+                    price: coursePrice,
+                    imageLink: imageLink,
+                    published,
+                  }),
+                })
+                  .then((res) => {
+                    return res.json();
+                  })
+                  .then((data) => {
+                    // alert(data)
+                    console.log(data);
+                    alert(data.message);
+                  });
               }}
             >
               Create

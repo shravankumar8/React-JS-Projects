@@ -3,13 +3,14 @@ import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import url from "../assets/url";
 // import Button from "@mui/material/Button";
 
 function Appbar() {
   const [userEmail, setUserEmail] = useState(null);
   let navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:3000/profile/me", {
+    fetch(`${url}/profile/me`, {
       method: "GET",
       headers: { authorization: "bearer " + localStorage.getItem("JwtToken") },
     })
@@ -32,12 +33,28 @@ function Appbar() {
           <div>
             <Typography style={{ color: "white" }}>coursera</Typography>
           </div>
+          <Button
+            onClick={() => {
+              navigate("/courses");
+            }}
+            variant="contained"
+          >
+            courses
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/createcourse");
+            }}
+            variant="contained"
+          >
+            create course
+          </Button>
           <div style={{ display: "flex" }}>
             <div>
               {" "}
               <Typography style={{ color: "white" }}>{userEmail}</Typography>
             </div>
-            <div style={{ marginRight: "2px",marginLeft:"20px" }}>
+            <div style={{ marginRight: "2px", marginLeft: "20px" }}>
               <Button
                 onClick={() => {
                   localStorage.setItem("JwtToken", null);

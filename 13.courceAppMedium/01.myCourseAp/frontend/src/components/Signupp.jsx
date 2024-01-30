@@ -8,6 +8,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import Appbar from "./Appbar";
 import { useNavigate } from "react-router-dom";
+import url from "../assets/url";
 
 
 function Signup() {
@@ -16,7 +17,7 @@ function Signup() {
   const [password,setpassword]=useState("")
   return (
     <>
-    < Appbar/>
+      <Appbar />
       <div>
         <div
           style={{
@@ -67,7 +68,7 @@ function Signup() {
             <Button
               variant="contained"
               onClick={() => {
-                fetch("http://localhost:3000/admin/signup", {
+                fetch(`${url}/admin/signup`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ username, password }),
@@ -78,12 +79,11 @@ function Signup() {
                     return res.json();
                   })
                   .then((data) => {
-                    console.log(data.message  );
-                    if(data.token){   
-                      setTimeout(() =>{
-
+                    console.log(data.message);
+                    if (data.token) {
+                      setTimeout(() => {
                         navigate("/");
-                      },500)
+                      }, 500);
 
                       localStorage.setItem("JwtToken", data.token);
                     }

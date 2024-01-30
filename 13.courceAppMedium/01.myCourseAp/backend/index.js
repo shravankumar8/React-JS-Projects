@@ -46,17 +46,14 @@ function generateJwt(username) {
 function authenticateJwtAdmin(req, res, next) {
   authHeader = req.headers.authorization;
   
-  console.log(authHeader)
 
   if (authHeader) {
     token = authHeader.split(" ")[1];
 
     jwt.verify(token, jwtKeyAdmin, (err, user) => {
       if (err) {
-        console.log("rgrfg")
         return res.status(403).json({ message: "unable to verify user" });
       }
-      console.log("dfgrg")
       req.user = user;
       next();
     });
@@ -115,6 +112,12 @@ app.put("/admin/courses/:courseId", authenticateJwtAdmin, async (req, res) => {
 
 app.get("/admin/courses", authenticateJwtAdmin, async (req, res) => {
   const courses = await Course.find({});
+  return res.json({ courses });
+});
+app.get("/admin/course/:courseId", authenticateJwtAdmin, async (req, res) => {
+  let course = req.params.courseId;
+  const courses = await Course.findOne({ _id: course });
+  console.log(courses);
   return res.json({ courses });
 });
 
@@ -218,6 +221,6 @@ app.get("/users/purchasedCourses", authenticateJwtUser, async (req, res) => {
 app.get("*", (req, res) => {
   res.status(404).json({ message: "not found" });
 });
-app.listen(3000, () => {
+app.listen(3000,"192.168.29.52", () => {
   console.log("Server is listening on port 3000");
-});
+})

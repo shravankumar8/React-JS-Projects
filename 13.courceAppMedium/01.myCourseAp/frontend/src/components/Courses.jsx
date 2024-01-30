@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
-
+import Button from "@mui/material/Button";
+import url from '../assets/url'
+import Appbar from "./Appbar";
 function Courses() {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/admin/courses", {
+    fetch(`${url}/admin/courses`, {
       method: "GET",
       headers: {
         authorization: "bearer " + localStorage.getItem("JwtToken"),
@@ -18,34 +20,145 @@ function Courses() {
       });
   }, []);
   return (
-    <div
-      style={{
-        color: "white",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent:"center"
-      }}
-    >
-      {courses.map((course) => {
-        return <Course course={course} />;
-      })}
-    </div>
+    <>
+      <Appbar />
+      <div
+        style={{
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {courses.map((course) => {
+          return <Course course={course} />;
+        })}
+      </div>
+    </>
   );
   function Course(props) {
     return (
       <Card
         style={{
           margin: 10,
-          width: 300,
-          minHeight: 200,
+          width: "70%",
+          padding: "10px",
+          paddingTop: "20px",
+          minHeight: 10,
+          display: "flex",
+        
         }}
       >
-        <div>{props.course.title + " " + props.course.description}</div>
-        <img
-          src={`src/components/files/${props.course.imageLink}`}
-          alt=""
-          width={250}
-        />
+        <div className="imageDiv">
+          <img
+            src={props.course.imageLink}
+            style={{
+              width:"300px",
+              maxWidth: "300px",
+              maxHeight: "140px",
+              marginRight: "10px",
+            }}
+            alt=""
+          />
+        </div>
+        <div
+          style={{ display: "flex", flexDirection: "column" }}
+          className="sodiDiv"
+        >
+          <div
+            style={{
+              textTransform: "uppercase",
+
+              display: "block",
+              fontFamily: "sans-serif",
+              fontSize: "16px",
+              fontWeight: "700",
+              textWrap: "wrap",
+            }}
+          >
+            {props.course.title}
+          </div>
+          <div
+            style={{
+              fontSize: "14px",
+              lineHeight: "19.6px",
+              marginTop: "10px",
+              textWrap: "wrap",
+              fontWeight: "400",
+              marginButton: "4px",
+            }}
+            className="description"
+          >
+            {props.course.description}
+          </div>
+          <div
+            style={{
+              marginTop: "10px",
+              color: "rgb(106, 111, 115)",
+              fontSize: "12px",
+              fontWeight: "400",
+            }}
+            className="admin"
+          >
+            {props.course.userName}
+          </div>
+          <div
+            style={{
+              marginTop: "10px",
+              // color: "grey",
+              fontSize: "16px",
+              fontWeight: "700",
+              display: "flex",
+              gap: "10px",
+            }}
+            className="admin"
+          >
+            <div
+              style={{
+                fontSize: "14px",
+                color: "#6a6f73",
+                textDecoration: "line-through",
+              }}
+            >
+              {props.course.price + 10 + "$"}
+            </div>
+            <div
+              style={{
+                fontSize: "14px",
+              }}
+            >
+              {props.course.price + "$"}
+            </div>
+          </div>
+          <div
+            style={{
+              marginTop: "10px",
+              // color: "grey",
+              fontSize: "16px",
+              fontWeight: "700",
+            }}
+            className="admin"
+          >
+            {props.course.published ? (
+              <p>Status: Published</p>
+            ) : (
+              <p>Status: Not Published</p>
+            )}
+          </div>
+          <div>
+            <Button style={{
+              width:"50px",
+              marginTop:"10px"
+            }}
+              onClick={() => {
+              }}
+              variant="contained"
+            >
+              Edit
+            </Button>
+          </div>
+        </div>
       </Card>
     );
   }
