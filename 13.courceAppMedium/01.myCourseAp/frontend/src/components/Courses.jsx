@@ -3,7 +3,9 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import url from '../assets/url'
 import Appbar from "./Appbar";
+import { useNavigate } from "react-router-dom";
 function Courses() {
+   let navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     fetch(`${url}/admin/courses`, {
@@ -12,7 +14,14 @@ function Courses() {
         authorization: "bearer " + localStorage.getItem("JwtToken"),
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if(response.status==403 || response.status==404|| response.status===401) {
+          navigate("/")
+        }
+
+        return response.json()
+      
+      })
       .then((data) => {
         //    data=JSON.stringify(data);
         setCourses(data.courses);
@@ -40,6 +49,10 @@ function Courses() {
   function Course(props) {
     return (
       <Card
+      onClick={()=>{
+        navigate(`/course/${props.course._id}`);
+
+      }}
         style={{
           margin: 10,
           width: "70%",
@@ -146,20 +159,10 @@ function Courses() {
               <p>Status: Not Published</p>
             )}
           </div>
-          <div>
-            <Button style={{
-              width:"50px",
-              marginTop:"10px"
-            }}
-              onClick={() => {
-              }}
-              variant="contained"
-            >
-              Edit
-            </Button>
-          </div>
+            
         </div>
       </Card>
+      
     );
   }
 }

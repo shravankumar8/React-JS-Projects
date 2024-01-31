@@ -7,7 +7,7 @@ import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import Appbar from "./Appbar";
 import url from "../assets/url"
-
+import { useNavigate } from "react-router-dom";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 import * as React from "react";
@@ -31,6 +31,7 @@ function CreateCourse() {
   const [imageLink, setImageLink] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [image, setImage] = useState(null);
+   let navigate = useNavigate();
   return (
     <>
 

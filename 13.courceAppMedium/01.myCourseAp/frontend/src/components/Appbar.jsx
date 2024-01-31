@@ -14,7 +14,14 @@ function Appbar() {
       method: "GET",
       headers: { authorization: "bearer " + localStorage.getItem("JwtToken") },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 403||response.status ===404||response.status ===401) {
+          navigate("/signup");
+        }else{
+
+          return  response.json();
+        }
+      })
       .then((data) => {
         if (data.username) {
           setUserEmail(data.username);

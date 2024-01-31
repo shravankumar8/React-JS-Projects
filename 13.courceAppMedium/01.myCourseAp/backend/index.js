@@ -99,6 +99,7 @@ app.get("/profile/me",authenticateJwtAdmin,async(req, res)=>{
 });
 app.put("/admin/courses/:courseId", authenticateJwtAdmin, async (req, res) => {
   // logic to edit a course
+  console.log(req.params.courseId)
   const course = await Course.findByIdAndUpdate(req.params.courseId, req.body, {
     new: true,
   });
@@ -115,11 +116,22 @@ app.get("/admin/courses", authenticateJwtAdmin, async (req, res) => {
   return res.json({ courses });
 });
 app.get("/admin/course/:courseId", authenticateJwtAdmin, async (req, res) => {
-  let course = req.params.courseId;
-  const courses = await Course.findOne({ _id: course });
-  console.log(courses);
-  return res.json({ courses });
+  try {
+    const courseId = req.params.courseId;
+    console.log(courseId);
+
+    const course = await Course.findById({_id: courseId });
+    if (course.title) {
+      return res.json({ course });
+    } else {
+      return res.status(404).json({ message: "Course not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
 
 // User routes
 jwtKeyUser = "provenworksUser";
