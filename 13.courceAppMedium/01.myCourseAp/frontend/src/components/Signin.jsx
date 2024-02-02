@@ -7,9 +7,10 @@ import CardContent from "@mui/material/CardContent";
 import { Typography } from "@mui/material";
  import Appbar from "./Appbar";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
  function Signin() {
+    let navigate = useNavigate();
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
    return (
@@ -79,9 +80,15 @@ import url from "../assets/url";
                      return res.json();
                    })
                    .then((data) => {
+                    if(data.token === undefined){
+                      alert("username not found /credentials dont match")
+                     return console.log("USername not found")
+                    }else{
                      console.log(data.token);
-                     localStorage.setItem("JWDAuthToken", data.token);
-                   });
+                     localStorage.setItem("JwtToken", data.token);
+                     navigate("/")
+
+               }});
                }}
                variant="contained"
              >

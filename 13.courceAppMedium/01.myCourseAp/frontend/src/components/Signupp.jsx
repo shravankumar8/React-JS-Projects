@@ -79,7 +79,7 @@ function Signup() {
                     return res.json();
                   })
                   .then((data) => {
-                    console.log(data.message);
+                    alert(data.message);
                     if (data.token) {
                       setTimeout(() => {
                         navigate("/");

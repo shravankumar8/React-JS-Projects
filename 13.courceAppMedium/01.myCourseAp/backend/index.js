@@ -118,10 +118,10 @@ app.get("/admin/courses", authenticateJwtAdmin, async (req, res) => {
 app.get("/admin/course/:courseId", authenticateJwtAdmin, async (req, res) => {
   try {
     const courseId = req.params.courseId;
-    console.log(courseId);
+    // console.log(courseId);
 
     const course = await Course.findById({_id: courseId });
-    if (course.title) {
+    if (course._id) {
       return res.json({ course });
     } else {
       return res.status(404).json({ message: "Course not found" });

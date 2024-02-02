@@ -7,19 +7,34 @@ import url from "../assets/url";
 // import Button from "@mui/material/Button";
 
 function Appbar() {
+  // Get the full URL including query parameters and hash
   const [userEmail, setUserEmail] = useState(null);
+  
+  
+  // Get the path part of the URL (excluding domain, query parameters, and hash)
+  let currentPath = window.location.pathname;
+  
+  // console.log("Current Path:", currentPath);
+  
   let navigate = useNavigate();
   useEffect(() => {
+    // console.log(currentPath);
+    if(currentPath=="/signin"){
+        return 
+    }
     fetch(`${url}/profile/me`, {
       method: "GET",
       headers: { authorization: "bearer " + localStorage.getItem("JwtToken") },
     })
       .then((response) => {
-        if (response.status === 403||response.status ===404||response.status ===401) {
+        if (
+          response.status === 403 ||
+          response.status === 404 ||
+          response.status === 401
+        ) {
           navigate("/signup");
-        }else{
-
-          return  response.json();
+        } else {
+          return response.json();
         }
       })
       .then((data) => {

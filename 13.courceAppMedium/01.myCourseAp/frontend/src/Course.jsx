@@ -251,11 +251,11 @@ function Course(){
                         "bearer" + " " + localStorage.getItem("JwtToken"),
                     },
                     body: JSON.stringify({
-                      title: courseTitle,
-                      description: courseDescription,
-                      price: coursePrice,
-                      imageLink: imageLink,
-                      published,
+                      title: course.title,
+                      description: course.description,
+                      price: course.price,
+                      imageLink: course.imageLink,
+                      published: course.published,
                     }),
                   })
                     .then((res) => {
