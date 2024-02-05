@@ -4,45 +4,23 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
+import { useRecoilValue,useSetRecoilState } from "recoil";
+import { userState } from "../../atom/admin";
+import { userEmailState } from "../../selectors/username";
+import { isLoadingState } from "../../selectors/isLoading";
 // import Button from "@mui/material/Button";
 
 function Appbar() {
+const navigate = useNavigate()
+const userEmail=useRecoilValue(userEmailState)
+const userState1=useRecoilValue(userState);
+const isLoading=useRecoilValue(isLoadingState)
   // Get the full URL including query parameters and hash
-  const [userEmail, setUserEmail] = useState(null);
   
   
   // Get the path part of the URL (excluding domain, query parameters, and hash)
-  let currentPath = window.location.pathname;
-  
-  // console.log("Current Path:", currentPath);
-  
-  let navigate = useNavigate();
-  useEffect(() => {
-    // console.log(currentPath);
-    if(currentPath=="/signin"){
-        return 
-    }
-    fetch(`${url}/profile/me`, {
-      method: "GET",
-      headers: { authorization: "bearer " + localStorage.getItem("JwtToken") },
-    })
-      .then((response) => {
-        if (
-          response.status === 403 ||
-          response.status === 404 ||
-          response.status === 401
-        ) {
-          navigate("/signup");
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        if (data.username) {
-          setUserEmail(data.username);
-        }
-      });
-  }, []);
+  // console.log(currentPath);
+  console.log(userEmail);
   if (userEmail) {
     return (
       <>
