@@ -36,7 +36,6 @@ function CreateCourse() {
     <>
 
 
-      <Appbar />
       <div>
         {selectedFile.name}
         <div

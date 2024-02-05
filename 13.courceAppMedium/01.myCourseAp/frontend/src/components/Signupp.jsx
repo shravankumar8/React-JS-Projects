@@ -17,7 +17,6 @@ function Signup() {
   const [password,setpassword]=useState("")
   return (
     <>
-      <Appbar />
       <div>
         <div
           style={{

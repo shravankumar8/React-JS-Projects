@@ -30,7 +30,6 @@ function Courses() {
   }, []);
   return (
     <>
-      <Appbar />
       <div
         style={{
           color: "white",

@@ -15,7 +15,6 @@ import url from "../assets/url";
     const [password, setpassword] = useState("");
    return (
      <>
-       <Appbar />
        <div>
          <div
            style={{
