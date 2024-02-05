@@ -9,10 +9,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+    const [imageLink,setImageLink]=useState("")
   const navigate = useNavigate();
   return (
     <>
-      <Grid container style={{ display: "flex", justifyContent:"center",padding: "5vw" }}>
+      <Grid
+        container
+        style={{ display: "flex", justifyContent: "center", padding: "5vw" }}
+      >
         <Grid item xs={12} md={6} lg={7}>
           <div className="sodisollu" style={{ marginTop: "70px" }}>
             <Typography color={"white"} variant={"h2"}>
@@ -51,7 +55,7 @@ const LandingPage = () => {
           <div style={{ width: "40", marginTop: "50px" }}>
             <img
               style={{ maxInlineSize: "100%", blockSize: "auto," }}
-              src="https://www.deadready.co.uk/wp-content/uploads/2023/03/Aspect-Ratio-Blog-Image-Updated.jpg"
+              src="https://www.classcentral.com/report/wp-content/uploads/2022/10/udemy-personal-plan-expands-banner.png"
               alt=""
             />
           </div>
