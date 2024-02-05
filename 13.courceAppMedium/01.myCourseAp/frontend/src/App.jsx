@@ -34,3 +34,6 @@ export default App;
 // /but the app which we built is the least fking effecient
 // to make this effecient in state management we have two methods we can use global methods to verify the user auth
 // and another efficient way is to use external libraries and apis
+//1. one method is to create a global top level state where all the components use that that instead of getting values each time 
+// but the disadvantage of this is that all the components rerender everything rerenders no matter which state is changed
+// 2.another method is to use a library such as use contect of another hooks or recoil
