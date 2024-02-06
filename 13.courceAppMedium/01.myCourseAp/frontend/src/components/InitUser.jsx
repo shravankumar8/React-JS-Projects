@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import url from "../assets/url";
-import { userState } from "../../atom/admin";
+import { userState } from "../store/atom/admin";
 export function InitUser() {
   const setAdmin = useSetRecoilState(userState);
 

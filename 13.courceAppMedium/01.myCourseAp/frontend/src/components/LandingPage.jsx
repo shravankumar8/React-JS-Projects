@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import * as React from "react";
 import { Typography, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { userEmailState } from "../../selectors/username";
+import { userEmailState } from "../store/selectors/username";
 import {
   RecoilRoot,
   useRecoilValue,

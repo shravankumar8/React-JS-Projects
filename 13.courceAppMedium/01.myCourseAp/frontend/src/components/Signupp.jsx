@@ -7,10 +7,10 @@ import { useState } from "react";
 import Appbar from "./Appbar";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
-import { userEmailState } from "../../selectors/username";
+import { userEmailState } from "../store/selectors/username";
 import InitUser from "./InitUser";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { userState } from "../../atom/admin";
+import { userState } from "../store/atom/admin";
 
 function Signup() {
   let navigate =useNavigate()

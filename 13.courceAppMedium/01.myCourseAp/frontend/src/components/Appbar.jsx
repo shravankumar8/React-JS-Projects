@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { useRecoilValue,useSetRecoilState } from "recoil";
-import { userState } from "../../atom/admin";
-import { userEmailState } from "../../selectors/username";
-import { isLoadingState } from "../../selectors/isLoading";
+import { userState } from "../store/atom/admin";
+import { userEmailState } from "../store/selectors/username";
+import { isLoadingState } from "../store/selectors/isLoading";
 // import Button from "@mui/material/Button";
 
 function Appbar() {

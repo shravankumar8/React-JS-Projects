@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { userState } from "../../atom/admin";
+import { userState } from "../store/atom/admin";
  function Signin() {
   const setUserState = useSetRecoilState(userState);
 
