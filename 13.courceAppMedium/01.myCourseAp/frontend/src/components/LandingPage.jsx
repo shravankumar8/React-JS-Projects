@@ -1,15 +1,16 @@
 import Button from "@mui/material/Button";
 import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import { Typography, Grid } from "@mui/material";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { userEmailState } from "../../selectors/username";
+import {
+  RecoilRoot,
+  useRecoilValue,
+  useResetRecoilState,
+  useSetRecoilState,
+} from "recoil";
 const LandingPage = () => {
-    const [imageLink,setImageLink]=useState("")
+ 
   const navigate = useNavigate();
   return (
     <>
@@ -27,26 +28,7 @@ const LandingPage = () => {
             </Typography>
             <div style={{ display: "flex", marginTop: "10px" }}>
               <div className="signupdiv" style={{ marginRight: "10px" }}>
-                <Button
-                  size="large"
-                  variant="contained"
-                  onClick={() => {
-                    navigate("/signup");
-                  }}
-                >
-                  SignUp
-                </Button>
-              </div>
-              <div className="signindiv" style={{ marginRight: "10px" }}>
-                <Button
-                  size={"large"}
-                  variant={"contained"}
-                  onClick={() => {
-                    navigate("/singin");
-                  }}
-                >
-                  Signin
-                </Button>
+                <Buttond />
               </div>
             </div>
           </div>
@@ -65,3 +47,51 @@ const LandingPage = () => {
   );
 };
 export default LandingPage;
+function Buttond(){
+   const userEmail = useRecoilValue(userEmailState);
+
+  if(userEmail){
+    return (
+      <div style={{ display: "flex", gap: "10px" }}>
+        <Button
+          onClick={() => {
+            navigate("/courses");
+          }}
+          variant="contained"
+        >
+          courses
+        </Button>
+        <Button
+          onClick={() => {
+            navigate("/createcourse");
+          }}
+          variant="contained"
+        >
+          create course
+        </Button>
+      </div>
+    );
+  } else{
+    return (
+      <div style={{ display: "flex", gap: "10px" }}>
+        <Button
+          onClick={() => {
+            navigate("/signup");
+          }}
+          variant="contained"
+        >
+          Signup
+        </Button>
+
+        <Button
+          onClick={() => {
+            navigate("/signin");
+          }}
+          variant="contained"
+        >
+          Signin
+        </Button>
+      </div>
+    );
+  }
+}

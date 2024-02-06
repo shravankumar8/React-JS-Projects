@@ -9,7 +9,11 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { userState } from "../../atom/admin";
  function Signin() {
+  const setUserState = useSetRecoilState(userState);
+
     let navigate = useNavigate();
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
@@ -83,9 +87,13 @@ import url from "../assets/url";
                       alert("username not found /credentials dont match")
                      return console.log("USername not found")
                     }else{
-                     console.log(data.token);
+                     setUserState ({
+                       isLoading: false,
+                       userMail: username,
+                     });
                      localStorage.setItem("JwtToken", data.token);
                      navigate("/")
+
 
                }});
                }}

@@ -25,7 +25,6 @@ function Courses() {
       .then((data) => {
         //    data=JSON.stringify(data);
         setCourses(data.courses);
-        console.log(courses);
       });
   }, []);
   return (

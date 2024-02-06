@@ -13,14 +13,13 @@ import { isLoadingState } from "../../selectors/isLoading";
 function Appbar() {
 const navigate = useNavigate()
 const userEmail=useRecoilValue(userEmailState)
-const userState1=useRecoilValue(userState);
+const setuserState = useSetRecoilState(userState);
 const isLoading=useRecoilValue(isLoadingState)
   // Get the full URL including query parameters and hash
   
   
   // Get the path part of the URL (excluding domain, query parameters, and hash)
   // console.log(currentPath);
-  console.log(userEmail);
   if (userEmail) {
     return (
       <>
@@ -58,7 +57,13 @@ const isLoading=useRecoilValue(isLoadingState)
               <Button
                 onClick={() => {
                   localStorage.setItem("JwtToken", null);
-                  navigate("/signup");
+                  navigate("/");
+                  setuserState({
+                    isLoading: false,
+                    userMail: null,
+                  });
+
+
                 }}
                 variant="contained"
               >
