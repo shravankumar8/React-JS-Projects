@@ -42,6 +42,8 @@ function Course() {
   }, [courseId]);
   return (
     <>
+      <div style={{ color: "white" }}></div>
+
       <div
         style={{
           display: "flex",
@@ -53,16 +55,17 @@ function Course() {
           style={{
             display: "flex",
             margin: "20px",
-            width: "90vw",
+            width: "40vw",
             padding: "20px",
             paddingTop: "20px",
           }}
         >
+          <div></div>
           <div className="imageDiv">
             <img
               src={course?.imageLink}
               style={{
-                width: "600px",
+                width: "250px",
                 marginRight: "10px",
               }}
               alt=""
@@ -156,7 +159,7 @@ function Course() {
         </Card>
         <div>
           <div>
-            <Typography style={{ fontSize: "20px" }}>
+            <Typography style={{ color: "white", fontSize: "20px" }}>
               Edit the course below
             </Typography>
           </div>
