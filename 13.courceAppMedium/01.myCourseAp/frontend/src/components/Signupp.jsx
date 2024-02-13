@@ -4,20 +4,21 @@ import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import { Typography } from "@mui/material";
 import { useState } from "react";
-import Appbar from "./Appbar";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { userEmailState } from "../store/selectors/username";
-import InitUser from "./InitUser";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {  useSetRecoilState } from "recoil";
 import { userState } from "../store/atom/admin";
+import { z }from 'zod';
 
 function Signup() {
+  
   let navigate =useNavigate()
   const setUserState = useSetRecoilState(userState);
   if(userEmailState){
     const [username,setusername]=useState("")
     const [password,setpassword]=useState("")
+    
 return (
   <>
     <div>
@@ -70,30 +71,48 @@ return (
           <Button
             variant="contained"
             onClick={() => {
-              fetch(`${url}/admin/signup`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }),
-              })
-                .then((res) => {
-                  if (res.statusCode === 200) {
-                  }
-                  return res.json();
-                })
-                .then((data) => {
-                  alert(data.message);
-                  if (data.token) {
-                    setUserState({
-                      isLoading: false,
-                      userMail: username,
-                    });
-                    setTimeout(() => {
-                      navigate("/");
-                    }, 500);
-                    localStorage.setItem("JwtToken", data.token);
+              let titleInputProps = z.object({
+                username: z.string().min(1),
+                password: z.string().min(6),
+              });
+               const parsedInput = titleInputProps.safeParse({
+                 username,
+                 password,
+               });
+               if(parsedInput.success) {
+              setusername(parsedInput.data.username)
+              setpassword(parsedInput.data.password)
 
-                  }
-                });
+                 fetch(`${url}/admin/signup`, {
+                   method: "POST",
+                   headers: { "Content-Type": "application/json" },
+                   body: JSON.stringify(
+                    { username, password }
+                    ),
+                 })
+                   .then((res) => {
+                     if (res.statusCode === 200) {
+                     }
+                     return res.json();
+                   })
+                   .then((data) => {
+                     alert(data.message);
+                     if (data.token) {
+                       setUserState({
+                         isLoading: false,
+                         userMail: username,
+                       });
+                       setTimeout(() => {
+                         navigate("/");
+                       }, 500);
+                       localStorage.setItem("JwtToken", data.token);
+   
+                     }
+                   });
+               }
+               else{
+                alert("mari chinna password vaddu bro inka mari email string ye kottu bro  ",parsedInput.error)
+               }
             }}
           >
             Signup
