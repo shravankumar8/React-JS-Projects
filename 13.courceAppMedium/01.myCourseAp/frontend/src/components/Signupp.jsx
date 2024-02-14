@@ -7,9 +7,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { userEmailState } from "../store/selectors/username";
+import {inputvalidation}from '../../../common/src/index'
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atom/admin";
-import { z } from "zod";
 
 function Signup() {
   let navigate = useNavigate();
@@ -70,14 +70,16 @@ function Signup() {
               <Button
                 variant="contained"
                 onClick={() => {
-                  let titleInputProps = z.object({
-                    username: z.string().min(1).email(),
-                    password: z.string().min(6),
-                  });
-                  const parsedInput = titleInputProps.safeParse({
-                    username,
-                    password,
-                  });
+                  // let titleInputProps = z.object({
+                  //   username: z.string().min(1).email(),
+                  //   password: z.string().min(6),
+                  // });
+                  // const parsedInput = titleInputProps.safeParse({
+                  //   username,
+                  //   password,
+                  // });
+                  let parsedInput = inputvalidation(username,password);
+                  console.log(parsedInput)
                   if (parsedInput.success) {
                     setusername(parsedInput.data.username);
                     setpassword(parsedInput.data.password);

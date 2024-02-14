@@ -233,6 +233,6 @@ app.get("/users/purchasedCourses", authenticateJwtUser, async (req, res) => {
 app.get("*", (req, res) => {
   res.status(404).json({ message: "not found" });
 });
-app.listen(3000,"192.168.29.52", () => {
+app.listen(3000, "192.168.29.45", () => {
   console.log("Server is listening on port 3000");
-})
+});

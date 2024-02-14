@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atom/admin";
-import { z } from "zod";
+import { inputvalidation } from "../../../common/src/index";
 function Signin() {
   const setUserState = useSetRecoilState(userState);
 
@@ -67,14 +67,7 @@ function Signin() {
             <br />
             <Button
               onClick={() => {
-                let titleInputProps = z.object({
-                  username: z.string().min(6).email(),
-                  password: z.string().min(6),
-                });
-                const parsedInput = titleInputProps.safeParse({
-                  username,
-                  password,
-                });
+                 let parsedInput = inputvalidation(username, password);
                 if (parsedInput.success) {
                   setusername(parsedInput.data.username);
                   setpassword(parsedInput.data.password);
