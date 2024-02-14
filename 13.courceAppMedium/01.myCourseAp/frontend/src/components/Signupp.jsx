@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import url from "../assets/url";
 import { userEmailState } from "../store/selectors/username";
-import {inputvalidation}from '../../../common/src/index'
+import { inputvalidation } from "../../../common/src/index.js";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atom/admin";
 
@@ -78,8 +78,8 @@ function Signup() {
                   //   username,
                   //   password,
                   // });
-                  let parsedInput = inputvalidation(username,password);
-                  console.log(parsedInput)
+                  let parsedInput = inputvalidation(username, password);
+                  console.log(parsedInput);
                   if (parsedInput.success) {
                     setusername(parsedInput.data.username);
                     setpassword(parsedInput.data.password);
@@ -108,9 +108,7 @@ function Signup() {
                         }
                       });
                   } else {
-                    alert(
-                      parsedInput.error.errors[0].message
-                    );
+                    alert(parsedInput.error.errors[0].message);
                   }
                 }}
               >
